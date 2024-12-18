@@ -1,3 +1,5 @@
+Korean Chess(Janki) made by Visual C++ 6.0!!
+
 ========================================================================
        MICROSOFT FOUNDATION CLASS LIBRARY : Jangki
 ========================================================================
@@ -122,7 +124,7 @@ static char THIS_FILE[]=__FILE__;
 //////////////////////////////////////////////////////////////////////
 
 int CJKStage::sm_nCount;
-// ÈŞ¸®½ºÆ½ °ü·Ã ÇÃ·¡±×
+// íœ´ë¦¬ìŠ¤í‹± ê´€ë ¨ í”Œë˜ê·¸
 bool CJKStage::m_bPoBeforeJang;
 bool CJKStage::m_bJolToCenter;
 bool CJKStage::m_bCHAPOBalance;
@@ -234,7 +236,7 @@ void CJKStage::Initialize()
 }
 
 //////////////////////////////////////////////
-// ÁöÁ¤µÈ À§Ä¡·Î ¸»µéÀÌ Åë°úÇÒ ¼ö ÀÖ´ÂÁö Ã¼Å©
+// ì§€ì •ëœ ìœ„ì¹˜ë¡œ ë§ë“¤ì´ í†µê³¼í•  ìˆ˜ ìˆëŠ”ì§€ ì²´í¬
 bool CJKStage::IsPassable(int nX,int nY)
 {
 	if ( nX < 0 ) return false;
@@ -280,7 +282,7 @@ void CJKStage::ClearList(CJKStage *pException)
 	}
 }
 //////////////////////////////////////////////
-// ÁöÁ¤µÈ À§Ä¡·Î ¸»µéÀÌ ÀÌµ¿ÇÒ ¼ö ÀÖ´ÂÁö Ã¼Å©
+// ì§€ì •ëœ ìœ„ì¹˜ë¡œ ë§ë“¤ì´ ì´ë™í•  ìˆ˜ ìˆëŠ”ì§€ ì²´í¬
 bool CJKStage::TryToAddMovableXY(int nFromX,int nFromY,int nToX,int nToY)
 {
 	
@@ -289,7 +291,7 @@ bool CJKStage::TryToAddMovableXY(int nFromX,int nFromY,int nToX,int nToY)
 	if ( nToX >= DF_PANEL_WIDTH ) return false;
 	if ( nToY >= DF_PANEL_HEIGHT ) return false;
 	
-	// ÀÌµ¿ÇÏ°íÀÚ ÇÏ´Â °÷¿¡ °°Àº ÆÀ ¸»ÀÌ ÀÖÀ¸¸é ¸ø ¿òÁ÷ÀÎ´Ù.
+	// ì´ë™í•˜ê³ ì í•˜ëŠ” ê³³ì— ê°™ì€ íŒ€ ë§ì´ ìˆìœ¼ë©´ ëª» ì›€ì§ì¸ë‹¤.
 	if ( GetTeamAt(nToX,nToY) == GetTeamAt(nFromX,nFromY) ) return false;
 	
 	CJKStage *pNewStage = new CJKStage(this);
@@ -322,9 +324,9 @@ bool CJKStage::TryToAddMovableXY(int nFromX,int nFromY,int nToX,int nToY)
 	++ sm_nCount;
 
 	///////////////////////////////////////////////////////
-	// MaxÀÔÀå¿¡¼± ÃÖ´ë °ªÀ» °¡Áö´Â ±¹¸éÀ» ¼±ÅÃÇÏ¹Ç·Î
-	// "°¡Ä¡°¡ Å« ±¹¸é¼ø"À¸·Î Á¤·ÄÇØ µÎ¸é ¾ËÆÄº£Å¸ °¡ÁöÄ¡±â
-	// È¿À²ÀÌ Áõ´ëµÈ´Ù.
+	// Maxì…ì¥ì—ì„  ìµœëŒ€ ê°’ì„ ê°€ì§€ëŠ” êµ­ë©´ì„ ì„ íƒí•˜ë¯€ë¡œ
+	// "ê°€ì¹˜ê°€ í° êµ­ë©´ìˆœ"ìœ¼ë¡œ ì •ë ¬í•´ ë‘ë©´ ì•ŒíŒŒë² íƒ€ ê°€ì§€ì¹˜ê¸°
+	// íš¨ìœ¨ì´ ì¦ëŒ€ëœë‹¤.
 	if ( m_bAmIMax )
 	{
 		if ( m_pFirst )
@@ -406,7 +408,7 @@ bool CJKStage::TryToAddMovableXY(int nFromX,int nFromY,int nToX,int nToY)
 }
 
 //////////////////////////////////////////////
-// ÁöÁ¤µÈ À§Ä¡¿¡ ÀÖ´Â ¸»ÀÇ ¼Ò¼Ó ÆÀÀ» ¹İÈ¯
+// ì§€ì •ëœ ìœ„ì¹˜ì— ìˆëŠ” ë§ì˜ ì†Œì† íŒ€ì„ ë°˜í™˜
 TEAM CJKStage::GetTeamAt(int nX,int nY)
 {
 	if ( m_enPanel[nY][nX] == PS_NOTHING ) return TM_NOTHING;
@@ -495,8 +497,8 @@ void CJKStage::GetMovableJol(int nFromX,int nFromY)
 	int nDirection = GetTeamAt(nFromX,nFromY) == TM_CHO ? -1 : 1;
 	
 	//////////////////////////////////////////////////
-	// »ç,ÀåÀÌ ¿òÁ÷ÀÌ´Â ¿µ¿ª ¾È¿¡¼± »ç,Àå°ú ¶È°°ÀÌ 
-	// ´ë°¢¼±À¸·Îµµ ¿òÁ÷ÀÏ ¼öÀÖ´Ù.µÚ·Î´Â ±İÁö
+	// ì‚¬,ì¥ì´ ì›€ì§ì´ëŠ” ì˜ì—­ ì•ˆì—ì„  ì‚¬,ì¥ê³¼ ë˜‘ê°™ì´ 
+	// ëŒ€ê°ì„ ìœ¼ë¡œë„ ì›€ì§ì¼ ìˆ˜ìˆë‹¤.ë’¤ë¡œëŠ” ê¸ˆì§€
 	switch ( nFromY )
 	{
 	case 1	:
@@ -523,11 +525,11 @@ void CJKStage::GetMovableJol(int nFromX,int nFromY)
 		break;
 	}
 
-	// ÁÂ·Î ¿òÁ÷¿© º»´Ù.
+	// ì¢Œë¡œ ì›€ì§ì—¬ ë³¸ë‹¤.
 	TryToAddMovableXY(nFromX,nFromY,nFromX - 1,nFromY);
-	// ¿ì·Î ¿òÁ÷¿© º»´Ù.	
+	// ìš°ë¡œ ì›€ì§ì—¬ ë³¸ë‹¤.	
 	TryToAddMovableXY(nFromX,nFromY,nFromX + 1,nFromY);
-	// Á÷Áø ÇØ º»´Ù.
+	// ì§ì§„ í•´ ë³¸ë‹¤.
 	TryToAddMovableXY(nFromX,nFromY,nFromX,nFromY + nDirection);	
 }
 
@@ -535,7 +537,7 @@ void CJKStage::GetMovableJol(int nFromX,int nFromY)
 void CJKStage::GetMovablePo(int nFromX,int nFromY)
 {
 	bool bMovable = false;
-	// ¿ìÃø ¶óÀÎÀ¸·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ìš°ì¸¡ ë¼ì¸ìœ¼ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( int k = nFromX + 1; k < DF_PANEL_WIDTH; ++ k )
 	{
 		if ( bMovable )
@@ -553,8 +555,8 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		} else
 		{
 			/////////////////////////////////////////////////////
-			// Æ÷ ÀÌ¿ÜÀÇ ´Ù¸¥ ¸»ÀÌ ³ª¿Ã °æ¿ì ±× ´ÙÀ½Ä­ºÎÅÍ 
-			// Æ÷°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ¿µ¿ªÀÌ´Ù.
+			// í¬ ì´ì™¸ì˜ ë‹¤ë¥¸ ë§ì´ ë‚˜ì˜¬ ê²½ìš° ê·¸ ë‹¤ìŒì¹¸ë¶€í„° 
+			// í¬ê°€ ì´ë™í•  ìˆ˜ ìˆëŠ” ì˜ì—­ì´ë‹¤.
 			if ( m_enPanel[nFromY][k] == PS_HAN_PO )
 				break;
 			if ( m_enPanel[nFromY][k] == PS_CHO_PO )
@@ -565,7 +567,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 	}
 	
 	bMovable = false;
-	// ÁÂÃø ¶óÀÎÀ¸·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ì¢Œì¸¡ ë¼ì¸ìœ¼ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( k = nFromX - 1; k >= 0; -- k )
 	{
 		if ( bMovable )
@@ -583,8 +585,8 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		} else
 		{
 			/////////////////////////////////////////////////////
-			// Æ÷ ÀÌ¿ÜÀÇ ´Ù¸¥ ¸»ÀÌ ³ª¿Ã °æ¿ì ±× ´ÙÀ½Ä­ºÎÅÍ 
-			// Æ÷°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ¿µ¿ªÀÌ´Ù.
+			// í¬ ì´ì™¸ì˜ ë‹¤ë¥¸ ë§ì´ ë‚˜ì˜¬ ê²½ìš° ê·¸ ë‹¤ìŒì¹¸ë¶€í„° 
+			// í¬ê°€ ì´ë™í•  ìˆ˜ ìˆëŠ” ì˜ì—­ì´ë‹¤.
 			if ( m_enPanel[nFromY][k] == PS_HAN_PO )
 				break;
 			if ( m_enPanel[nFromY][k] == PS_CHO_PO )
@@ -594,7 +596,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		}
 	}
 	bMovable = false;
-	// À§·Î ÀÌµ¿½ÃÄÑ º»´Ù.
+	// ìœ„ë¡œ ì´ë™ì‹œì¼œ ë³¸ë‹¤.
 	for ( k = nFromY - 1; k >= 0; -- k )
 	{
 		if ( bMovable )
@@ -612,8 +614,8 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		} else
 		{
 			/////////////////////////////////////////////////////
-			// Æ÷ ÀÌ¿ÜÀÇ ´Ù¸¥ ¸»ÀÌ ³ª¿Ã °æ¿ì ±× ´ÙÀ½Ä­ºÎÅÍ 
-			// Æ÷°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ¿µ¿ªÀÌ´Ù.
+			// í¬ ì´ì™¸ì˜ ë‹¤ë¥¸ ë§ì´ ë‚˜ì˜¬ ê²½ìš° ê·¸ ë‹¤ìŒì¹¸ë¶€í„° 
+			// í¬ê°€ ì´ë™í•  ìˆ˜ ìˆëŠ” ì˜ì—­ì´ë‹¤.
 			if ( m_enPanel[k][nFromX] == PS_HAN_PO )
 				break;
 			if ( m_enPanel[k][nFromX] == PS_CHO_PO )
@@ -623,7 +625,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		}
 	}
 	bMovable = false;
-	// ¾Æ·¡·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ì•„ë˜ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
 	{
 		if ( bMovable )
@@ -642,8 +644,8 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 		{
 
 			/////////////////////////////////////////////////////
-			// Æ÷ ÀÌ¿ÜÀÇ ´Ù¸¥ ¸»ÀÌ ³ª¿Ã °æ¿ì ±× ´ÙÀ½Ä­ºÎÅÍ 
-			// Æ÷°¡ ÀÌµ¿ÇÒ ¼ö ÀÖ´Â ¿µ¿ªÀÌ´Ù.
+			// í¬ ì´ì™¸ì˜ ë‹¤ë¥¸ ë§ì´ ë‚˜ì˜¬ ê²½ìš° ê·¸ ë‹¤ìŒì¹¸ë¶€í„° 
+			// í¬ê°€ ì´ë™í•  ìˆ˜ ìˆëŠ” ì˜ì—­ì´ë‹¤.
 			if ( m_enPanel[k][nFromX] == PS_HAN_PO )
 				break;
 			if ( m_enPanel[k][nFromX] == PS_CHO_PO )
@@ -658,8 +660,8 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 void CJKStage::GetMovableCha(int nFromX,int nFromY)
 {
 	//////////////////////////////////////////////////
-	// »ç,ÀåÀÌ ¿òÁ÷ÀÌ´Â ¿µ¿ª ¾È¿¡¼± »ç,Àå°ú ¶È°°ÀÌ 
-	// ´ë°¢¼±À¸·Îµµ ¿òÁ÷ÀÏ ¼öÀÖ´Ù.
+	// ì‚¬,ì¥ì´ ì›€ì§ì´ëŠ” ì˜ì—­ ì•ˆì—ì„  ì‚¬,ì¥ê³¼ ë˜‘ê°™ì´ 
+	// ëŒ€ê°ì„ ìœ¼ë¡œë„ ì›€ì§ì¼ ìˆ˜ìˆë‹¤.
 	switch ( nFromY )
 	{
 	case 0	:
@@ -711,20 +713,20 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 		}
 		break;
 	}
-	// ¿ìÃø ¶óÀÎÀ¸·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ìš°ì¸¡ ë¼ì¸ìœ¼ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( int k = nFromX + 1; k < DF_PANEL_WIDTH; ++ k )
 	{
-		// °°ÀºÆÀ ¸»ÀÌ ÁøÇà·Î¿¡ ÀÖÀ¸¸é ´õ ÀÌ»ó ¸ø °£´Ù.
+		// ê°™ì€íŒ€ ë§ì´ ì§„í–‰ë¡œì— ìˆìœ¼ë©´ ë” ì´ìƒ ëª» ê°„ë‹¤.
 		if ( GetTeamAt(k,nFromY) == GetTeamAt(nFromX,nFromY) )
 			break;
 		TryToAddMovableXY(nFromX,nFromY,k,nFromY);
 		if ( GetTeamAt(k,nFromY) != PS_NOTHING )
 			break;
 	}
-	// ÁÂÃø ¶óÀÎÀ¸·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ì¢Œì¸¡ ë¼ì¸ìœ¼ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( k = nFromX - 1; k >= 0; -- k )
 	{
-		// °°ÀºÆÀ ¸»ÀÌ ÁøÇà·Î¿¡ ÀÖÀ¸¸é ´õ ÀÌ»ó ¸ø °£´Ù.
+		// ê°™ì€íŒ€ ë§ì´ ì§„í–‰ë¡œì— ìˆìœ¼ë©´ ë” ì´ìƒ ëª» ê°„ë‹¤.
 		if ( GetTeamAt(k,nFromY) == GetTeamAt(nFromX,nFromY) )
 			break;
 		TryToAddMovableXY(nFromX,nFromY,k,nFromY);
@@ -732,10 +734,10 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 			break;
 	}
 
-	// À§·Î ÀÌµ¿½ÃÄÑ º»´Ù.
+	// ìœ„ë¡œ ì´ë™ì‹œì¼œ ë³¸ë‹¤.
 	for ( k = nFromY - 1; k >= 0; -- k )
 	{
-		// °°ÀºÆÀ ¸»ÀÌ ÁøÇà·Î¿¡ ÀÖÀ¸¸é ´õ ÀÌ»ó ¸ø °£´Ù.
+		// ê°™ì€íŒ€ ë§ì´ ì§„í–‰ë¡œì— ìˆìœ¼ë©´ ë” ì´ìƒ ëª» ê°„ë‹¤.
 		if ( GetTeamAt(nFromX,k) == GetTeamAt(nFromX,nFromY) )
 			break;
 		TryToAddMovableXY(nFromX,nFromY,nFromX,k);
@@ -743,10 +745,10 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 			break;
 	}
 	
-	// ¾Æ·¡·Î ÀÌµ¿½ÃÄÑº»´Ù.
+	// ì•„ë˜ë¡œ ì´ë™ì‹œì¼œë³¸ë‹¤.
 	for ( k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
 	{
-		// °°ÀºÆÀ ¸»ÀÌ ÁøÇà·Î¿¡ ÀÖÀ¸¸é ´õ ÀÌ»ó ¸ø °£´Ù.
+		// ê°™ì€íŒ€ ë§ì´ ì§„í–‰ë¡œì— ìˆìœ¼ë©´ ë” ì´ìƒ ëª» ê°„ë‹¤.
 		if ( GetTeamAt(nFromX,k) == GetTeamAt(nFromX,nFromY) )
 			break;
 		TryToAddMovableXY(nFromX,nFromY,nFromX,k);
@@ -757,63 +759,63 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 
 void CJKStage::GetMovableMa(int nFromX,int nFromY)
 {
-	// Àü¹æ & ÁÂÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì „ë°© & ì¢Œì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY - 1) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 1,nFromY - 2);
-	// Àü¹æ & ¿ìÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì „ë°© & ìš°ì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY - 1) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 1,nFromY - 2);
-	// ÈÄ¹æ & ÁÂÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// í›„ë°© & ì¢Œì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY + 1) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 1,nFromY + 2);
-	// ÈÄ¹æ & ¿ìÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// í›„ë°© & ìš°ì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY + 1) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 1,nFromY + 2);
-	// ÁÂÃø & Àü¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì¢Œì¸¡ & ì „ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX - 1,nFromY) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 2,nFromY - 1);
-	// ÁÂÃø & ÈÄ¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì¢Œì¸¡ & í›„ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX - 1,nFromY) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 2,nFromY + 1);
-	// ¿ìÃø & Àü¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ìš°ì¸¡ & ì „ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX + 1,nFromY) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 2,nFromY - 1);
-	// ¿ìÃø & ÈÄ¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ìš°ì¸¡ & í›„ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX + 1,nFromY) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 2,nFromY + 1);
 }
 
 void CJKStage::GetMovableSang(int nFromX,int nFromY)
 {
-	// Àü¹æ & ÁÂÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì „ë°© & ì¢Œì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY - 1) && IsPassable(nFromX - 1,nFromY - 2) ) 
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 2,nFromY - 3);
 
-	// Àü¹æ & ¿ìÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì „ë°© & ìš°ì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY - 1) && IsPassable(nFromX + 1,nFromY - 2) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 2,nFromY - 3);
 	
-	// ÈÄ¹æ & ÁÂÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// í›„ë°© & ì¢Œì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY + 1) && IsPassable(nFromX - 1,nFromY + 2) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 2,nFromY + 3);
 	
-	// ÈÄ¹æ & ¿ìÃøÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// í›„ë°© & ìš°ì¸¡ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX,nFromY + 1) && IsPassable(nFromX + 1,nFromY + 2) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 2,nFromY + 3);
 	
-	// ÁÂÃø & Àü¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì¢Œì¸¡ & ì „ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX - 1,nFromY) && IsPassable(nFromX - 2,nFromY - 1) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 3,nFromY - 2);
 	
-	// ÁÂÃø & ÈÄ¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ì¢Œì¸¡ & í›„ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX - 1,nFromY) && IsPassable(nFromX - 2,nFromY + 1) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX - 3,nFromY + 2);
 	
-	// ¿ìÃø & Àü¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ìš°ì¸¡ & ì „ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX + 1,nFromY) && IsPassable(nFromX + 2,nFromY - 1) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 3,nFromY - 2);
 	
-	// ¿ìÃø & ÈÄ¹æÀ¸·Î ÀÌµ¿ÇØ º»´Ù.
+	// ìš°ì¸¡ & í›„ë°©ìœ¼ë¡œ ì´ë™í•´ ë³¸ë‹¤.
 	if ( IsPassable(nFromX + 1,nFromY) && IsPassable(nFromX + 2,nFromY + 1) )
 		TryToAddMovableXY(nFromX,nFromY,nFromX + 3,nFromY + 2);
 }
@@ -831,7 +833,7 @@ int CJKStage::PayOff()
 			case PS_CHO_JANG		: 
 				{
 					m_nScore -= DF_SCORE_JANG;
-					// Æ÷¸¦ Àå ¾Õ¿¡ µÎ·Á´Â ¼ºÇâ
+					// í¬ë¥¼ ì¥ ì•ì— ë‘ë ¤ëŠ” ì„±í–¥
 					if ( m_bPoBeforeJang )
 					{
 						if ( m_enPanel[j - 1][i] == PS_CHO_PO ) 
@@ -843,7 +845,7 @@ int CJKStage::PayOff()
 			case PS_CHO_JOL		: 
 				{
 					m_nScore -= DF_SCORE_JOL;
-					// Á¹À» ¼­·Î ¸ğÀ¸µÇ °¡¿îµ¥ÂÊÀ¸·Î ¸ğÀº´Ù.
+					// ì¡¸ì„ ì„œë¡œ ëª¨ìœ¼ë˜ ê°€ìš´ë°ìª½ìœ¼ë¡œ ëª¨ì€ë‹¤.
 					if ( m_bJolToCenter )
 					{
 						if ( m_enPanel[j][i - 1] == PS_CHO_JOL && i > 5 )
@@ -851,7 +853,7 @@ int CJKStage::PayOff()
 						if ( m_enPanel[j][i + 1] == PS_CHO_JOL &&  i <= 5 )
 							m_nScore -= 1;
 					}
-					// Á¹ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ì¡¸ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveJOL )
 					{
 						if ( j < 7 )
@@ -861,13 +863,13 @@ int CJKStage::PayOff()
 				}
 			case PS_CHO_PO		: 
 				{
-					// Æ÷ 2,Â÷ 1ÀÌ¸é Â÷ Á¡¼ö°¡ ³ô´Ù.
-					// Æ÷ 1,Â÷ 2ÀÌ¸é Æ÷ Á¡¼ö°¡ ³ô´Ù.
-					// ±×·¸Áö ¾ÊÀ½ Æ÷¿Í Â÷´Â µ¿±ŞÀÌ´Ù.
+					// í¬ 2,ì°¨ 1ì´ë©´ ì°¨ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// í¬ 1,ì°¨ 2ì´ë©´ í¬ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// ê·¸ë ‡ì§€ ì•ŠìŒ í¬ì™€ ì°¨ëŠ” ë™ê¸‰ì´ë‹¤.
 					m_nScore -= DF_SCORE_PO;
 					if ( m_bCHAPOBalance && m_nCHOPoCount < m_nCHOChaCount )
 						m_nScore -= 2000;
-					// Æ÷ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// í¬ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressivePO )
 					{
 						if ( j < 7 )
@@ -877,13 +879,13 @@ int CJKStage::PayOff()
 				}
 			case PS_CHO_CHA		: 
 				{
-					// Æ÷ 2,Â÷ 1ÀÌ¸é Â÷ Á¡¼ö°¡ ³ô´Ù.
-					// Æ÷ 1,Â÷ 2ÀÌ¸é Æ÷ Á¡¼ö°¡ ³ô´Ù.
-					// ±×·¸Áö ¾ÊÀ½ Æ÷¿Í Â÷´Â µ¿±ŞÀÌ´Ù.
+					// í¬ 2,ì°¨ 1ì´ë©´ ì°¨ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// í¬ 1,ì°¨ 2ì´ë©´ í¬ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// ê·¸ë ‡ì§€ ì•ŠìŒ í¬ì™€ ì°¨ëŠ” ë™ê¸‰ì´ë‹¤.
 					m_nScore -= DF_SCORE_CHA;
 					if ( m_bCHAPOBalance && m_nCHOChaCount < m_nCHOPoCount )
 						m_nScore -= 2000;
-					// Â÷ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ì°¨ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveCHA )
 					{
 						if ( j < 7 )
@@ -894,7 +896,7 @@ int CJKStage::PayOff()
 			case PS_CHO_MA		: 
 				{
 					m_nScore -= DF_SCORE_MA;
-					// ¸¶ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ë§ˆì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveMA )
 					{
 						if ( j < 7 )
@@ -905,7 +907,7 @@ int CJKStage::PayOff()
 			case PS_CHO_SANG	: 
 				{
 					m_nScore -= DF_SCORE_SANG;
-					// »óÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ìƒì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveSANG )
 					{
 						if ( j < 7 )
@@ -916,7 +918,7 @@ int CJKStage::PayOff()
 			case PS_HAN_JANG	: 
 				{
 					m_nScore += DF_SCORE_JANG;
-					// Æ÷¸¦ Àå ¾Õ¿¡ µÎ·Á´Â ¼ºÇâ
+					// í¬ë¥¼ ì¥ ì•ì— ë‘ë ¤ëŠ” ì„±í–¥
 					if ( m_bPoBeforeJang )
 					{			
 						if ( m_enPanel[j + 1][i] == PS_HAN_PO )
@@ -928,7 +930,7 @@ int CJKStage::PayOff()
 			case PS_HAN_JOL	: 
 				{
 					m_nScore += DF_SCORE_JOL;
-					// Á¹À» ¼­·Î ¸ğÀ¸µÇ °¡¿îµ¥ÂÊÀ¸·Î ¸ğÀº´Ù.
+					// ì¡¸ì„ ì„œë¡œ ëª¨ìœ¼ë˜ ê°€ìš´ë°ìª½ìœ¼ë¡œ ëª¨ì€ë‹¤.
 					if ( m_bJolToCenter )
 					{
 						if ( m_enPanel[j][i - 1] == PS_HAN_JOL && i > 5 )
@@ -936,7 +938,7 @@ int CJKStage::PayOff()
 						if ( m_enPanel[j][i + 1] == PS_HAN_JOL && i <= 5 )
 							m_nScore += 1;
 					}
-					// Á¹ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ì¡¸ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveJOL )
 					{
 						if ( j > 3 )
@@ -946,14 +948,14 @@ int CJKStage::PayOff()
 				}
 			case PS_HAN_PO		:
 				{
-					// Æ÷ 2,Â÷ 1ÀÌ¸é Â÷ Á¡¼ö°¡ ³ô´Ù.
-					// Æ÷ 1,Â÷ 2ÀÌ¸é Æ÷ Á¡¼ö°¡ ³ô´Ù.
-					// ±×·¸Áö ¾ÊÀ½ Æ÷¿Í Â÷´Â µ¿±ŞÀÌ´Ù.
+					// í¬ 2,ì°¨ 1ì´ë©´ ì°¨ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// í¬ 1,ì°¨ 2ì´ë©´ í¬ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// ê·¸ë ‡ì§€ ì•ŠìŒ í¬ì™€ ì°¨ëŠ” ë™ê¸‰ì´ë‹¤.
 					m_nScore += DF_SCORE_PO;
 					if ( m_bCHAPOBalance && m_nHANPoCount < m_nHANChaCount )
 						m_nScore += 2000;
 
-					// Æ÷ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// í¬ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressivePO )
 					{				
 						if ( j > 3 )
@@ -963,13 +965,13 @@ int CJKStage::PayOff()
 				}
 			case PS_HAN_CHA	: 
 				{
-					// Æ÷ 2,Â÷ 1ÀÌ¸é Â÷ Á¡¼ö°¡ ³ô´Ù.
-					// Æ÷ 1,Â÷ 2ÀÌ¸é Æ÷ Á¡¼ö°¡ ³ô´Ù.
-					// ±×·¸Áö ¾ÊÀ½ Æ÷¿Í Â÷´Â µ¿±ŞÀÌ´Ù.
+					// í¬ 2,ì°¨ 1ì´ë©´ ì°¨ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// í¬ 1,ì°¨ 2ì´ë©´ í¬ ì ìˆ˜ê°€ ë†’ë‹¤.
+					// ê·¸ë ‡ì§€ ì•ŠìŒ í¬ì™€ ì°¨ëŠ” ë™ê¸‰ì´ë‹¤.
 					m_nScore += DF_SCORE_CHA;
 					if ( m_bCHAPOBalance && m_nHANChaCount < m_nHANPoCount )
 						m_nScore += 2000;
-					// Â÷ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ì°¨ì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveCHA )
 					{
 						if ( j > 3 )
@@ -980,7 +982,7 @@ int CJKStage::PayOff()
 			case PS_HAN_MA		: 
 				{
 					m_nScore += DF_SCORE_MA;
-					// ¸¶ÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ë§ˆì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveMA )
 					{
 						if ( j > 3 )
@@ -991,7 +993,7 @@ int CJKStage::PayOff()
 			case PS_HAN_SANG	: 
 				{
 					m_nScore += DF_SCORE_SANG;
-					// »óÀÇ °ø°İ ¼ºÇâ ¾÷
+					// ìƒì˜ ê³µê²© ì„±í–¥ ì—…
 					if ( m_bAggressiveSANG )
 					{
 						if ( j > 3 )
@@ -1001,7 +1003,7 @@ int CJKStage::PayOff()
 				}
 			}
 		}
-	// Àå ÀÌ¿Ü¿¡´Â Àå ¿µ¿ª Áß°£¿¡ ¿À´Â °É ¸·´Â´Ù.
+	// ì¥ ì´ì™¸ì—ëŠ” ì¥ ì˜ì—­ ì¤‘ê°„ì— ì˜¤ëŠ” ê±¸ ë§‰ëŠ”ë‹¤.
 	if ( m_bOnlyJangCenter )
 	{
 		if ( m_enPanel[1][4] != PS_NOTHING && m_enPanel[1][4] != PS_HAN_JANG && m_enPanel[1][5] != PS_HAN_SA )
@@ -1058,7 +1060,7 @@ MOVERESULT CJKStage::HumanMove(int nFromX,int nFromY,int nToX,int nToY)
 
 	if ( bResult )
 	{
-		// History ÀúÀå
+		// History ì €ì¥
 		m_cHistoryStack.Push(nFromX,nFromY,nToX,nToY,enEatenPiece);
 	}
 
@@ -1077,7 +1079,7 @@ bool CJKStage::GetNextPieceLoc(int nFromX,int nFromY,CMoveData & cMD)
 	ClearList();
 	cMD.Reset();
 	/////////////////////////////////////////////////////
-	// °¢ ¸» º°·Î ¿òÁ÷ÀÏ ¼ö ÀÖ´Â ¹üÀ§¸¦ ±¸ÇÑ´Ù.
+	// ê° ë§ ë³„ë¡œ ì›€ì§ì¼ ìˆ˜ ìˆëŠ” ë²”ìœ„ë¥¼ êµ¬í•œë‹¤.
 	switch ( m_enPanel[nFromY][nFromX] )
 	{
 	case PS_CHO_JANG	: 
@@ -1157,9 +1159,9 @@ bool CJKStage::CutOffTest()
 	if ( m_enEatenPiece == PS_HAN_JANG ) return true;
 	
 	////////////////////////////////////////////////////////////
-	// FeedOver¸¦ ÇÒ ¶§ ÀÎ°£ÀÌ µÑ ¼ö°¡ Á¤ÀûÀÏ¶§ ±×¸¸µÖ¾ß ÇÑ´Ù.
-	// ÄÄÇ»ÅÍ ¼ö°¡ Á¤ÀûÀÌ¶ó¼­ ±×¸¸ µÑ °æ¿ì ±× ´ÙÀ½ ÀÎ°£ ¼ö¿¡¼­
-	// Ä¡¸íÅ¸¸¦ ÀÔÀ» ¼ö°¡ ÀÖ´Ù.
+	// FeedOverë¥¼ í•  ë•Œ ì¸ê°„ì´ ë‘˜ ìˆ˜ê°€ ì •ì ì¼ë•Œ ê·¸ë§Œë‘¬ì•¼ í•œë‹¤.
+	// ì»´í“¨í„° ìˆ˜ê°€ ì •ì ì´ë¼ì„œ ê·¸ë§Œ ë‘˜ ê²½ìš° ê·¸ ë‹¤ìŒ ì¸ê°„ ìˆ˜ì—ì„œ
+	// ì¹˜ëª…íƒ€ë¥¼ ì…ì„ ìˆ˜ê°€ ìˆë‹¤.
 	if ( m_enEatenPiece != PS_NOTHING )
 		if ( m_nDepth <= DF_FEEDOVER_DEPTH ) 
 			return false;
@@ -1171,16 +1173,16 @@ bool CJKStage::CutOffTest()
 	if ( m_enEatenPiece == PS_HAN_JANG ) return true;
 
 	/////////////////////////////////////////////////////
-	// ±âº»ÀûÀ¸·Î ¸î ¼ö ¾Õ±îÁö´Â ¹«Á¶°Ç ³»´Ùº»´Ù.
+	// ê¸°ë³¸ì ìœ¼ë¡œ ëª‡ ìˆ˜ ì•ê¹Œì§€ëŠ” ë¬´ì¡°ê±´ ë‚´ë‹¤ë³¸ë‹¤.
 	if ( m_nDepth <= DF_CUTOFF_DEPTH ) return false;
 
 	/////////////////////////////////////////////////////
-	// FEED OVER Depth±îÁö ¿À¸é Ãß·ĞÀ» ¿ÏÀüÈ÷ ±×¸¸µĞ´Ù.
+	// FEED OVER Depthê¹Œì§€ ì˜¤ë©´ ì¶”ë¡ ì„ ì™„ì „íˆ ê·¸ë§Œë‘”ë‹¤.
 	if ( m_nDepth >= DF_FEEDOVER_DEPTH ) return true;
 
 	/////////////////////////////////////////////////////
-	// FEED OVER¸¦ ÇÑ´Ù.Áï "ÀÎ°£ÀÌ µÑ ±¹¸é"ÀÌ Á¤ÀûÀÏ ¶§
-	// Ãß·ĞÀ» ±×¸¸µĞ´Ù.Depth °¡ È¦¼öÀÌ¸é ÀÎ°£ÀÌ µÑ ¼ö.
+	// FEED OVERë¥¼ í•œë‹¤.ì¦‰ "ì¸ê°„ì´ ë‘˜ êµ­ë©´"ì´ ì •ì ì¼ ë•Œ
+	// ì¶”ë¡ ì„ ê·¸ë§Œë‘”ë‹¤.Depth ê°€ í™€ìˆ˜ì´ë©´ ì¸ê°„ì´ ë‘˜ ìˆ˜.
 //	if ( m_nDepth % 2 == 1 && m_enEatenPiece == PS_NOTHING )
 	if ( m_enEatenPiece == PS_NOTHING )
 		return true;
@@ -1196,14 +1198,14 @@ int CJKStage::MaxValue(int nAlpha,int nBeta)
 	if ( CutOffTest() ) return m_nScore;
 	
 	////////////////////////////////////////////////////
-	// GetNextStage()¿¡¼­ °¡´ÉÇÑ ´ÙÀ½ ±¹¸éµéÀ» È¿À²ÀûÀ¸·Î
-	// ¼ÒÆ®(¾ËÆÄº£Å¸ °¡ÁöÄ¡±â¿¡)ÇÑ ÈÄ ¸®½ºÆ®·Î ¸¸µé¾îµĞ´Ù.
+	// GetNextStage()ì—ì„œ ê°€ëŠ¥í•œ ë‹¤ìŒ êµ­ë©´ë“¤ì„ íš¨ìœ¨ì ìœ¼ë¡œ
+	// ì†ŒíŠ¸(ì•ŒíŒŒë² íƒ€ ê°€ì§€ì¹˜ê¸°ì—)í•œ í›„ ë¦¬ìŠ¤íŠ¸ë¡œ ë§Œë“¤ì–´ë‘”ë‹¤.
 	GetNextStage();
 	if ( m_pFirst )
 	{
 		CJKStage * pNode = m_pFirst;
 		int nMinValue;
-		// ´ÙÀ½ ±¹¸éÀ» ¸ğµÎ Å×½ºÆ®ÇØº»´Ù.
+		// ë‹¤ìŒ êµ­ë©´ì„ ëª¨ë‘ í…ŒìŠ¤íŠ¸í•´ë³¸ë‹¤.
 		do
 		{
 			nMinValue = pNode->MinValue(nAlpha,nBeta);
@@ -1213,15 +1215,15 @@ int CJKStage::MaxValue(int nAlpha,int nBeta)
 				m_pSelectedChild = pNode;
 			}
 			////////////////////////////////////////////////////////
-			// ºÎ¸ğÀÎ MinÀº ÀÛÀº Á¡¼ö¸¦ ¼±ÅÃÇÏ·Á ÇÒ °ÍÀÎµ¥ ³»(Max)°¡
-			// ¸¸µç ±¹¸éÀÇ Á¡¼ö°¡ Betaº¸´Ù Ä¿¹ö¸®¸é ºÎ¸ğÀÎ MinÀÇ 
-			// ¼±ÅÃ±Ç¿¡¼­ ¹ş¾Æ³ª¹Ç·Î ´õ ÀÌ»ó ÁøÇà¿¡µµ ÀÇ¹Ì°¡ ¾ø´Ù.
-			// ³ª(Max)´Â °¡Àå Å« Á¡¼ö¸¦ °¡Áö´Â ±¹¸éÀ» ÅÃÇÏ±â ¶§¹®ÀÌ´Ù.
+			// ë¶€ëª¨ì¸ Minì€ ì‘ì€ ì ìˆ˜ë¥¼ ì„ íƒí•˜ë ¤ í•  ê²ƒì¸ë° ë‚´(Max)ê°€
+			// ë§Œë“  êµ­ë©´ì˜ ì ìˆ˜ê°€ Betaë³´ë‹¤ ì»¤ë²„ë¦¬ë©´ ë¶€ëª¨ì¸ Minì˜ 
+			// ì„ íƒê¶Œì—ì„œ ë²—ì•„ë‚˜ë¯€ë¡œ ë” ì´ìƒ ì§„í–‰ì—ë„ ì˜ë¯¸ê°€ ì—†ë‹¤.
+			// ë‚˜(Max)ëŠ” ê°€ì¥ í° ì ìˆ˜ë¥¼ ê°€ì§€ëŠ” êµ­ë©´ì„ íƒí•˜ê¸° ë•Œë¬¸ì´ë‹¤.
 			if ( nAlpha >= nBeta ) break;
 			pNode = pNode->m_pNext;
 		} while ( pNode != NULL );
 	} 
-	// ¼±ÅÃµÈ ´ÙÀ½ ±¹¸éÀº ¸Ş¸ğ¸®»ó¿¡¼­ »èÁ¦ÇÏÁö ¾Ê´Â´Ù.
+	// ì„ íƒëœ ë‹¤ìŒ êµ­ë©´ì€ ë©”ëª¨ë¦¬ìƒì—ì„œ ì‚­ì œí•˜ì§€ ì•ŠëŠ”ë‹¤.
 	ClearList(m_pSelectedChild);
 	return nAlpha;
 }
@@ -1232,8 +1234,8 @@ int CJKStage::MinValue(int nAlpha,int nBeta)
 	if ( CutOffTest() ) return m_nScore;
 
 	////////////////////////////////////////////////////
-	// GetNextStage()¿¡¼­ °¡´ÉÇÑ ´ÙÀ½ ±¹¸éµéÀ» È¿À²ÀûÀ¸·Î
-	// ¼ÒÆ®(¾ËÆÄº£Å¸ °¡ÁöÄ¡±â¿¡)ÇÑ ÈÄ ¸®½ºÆ®·Î ¸¸µé¾îµĞ´Ù.
+	// GetNextStage()ì—ì„œ ê°€ëŠ¥í•œ ë‹¤ìŒ êµ­ë©´ë“¤ì„ íš¨ìœ¨ì ìœ¼ë¡œ
+	// ì†ŒíŠ¸(ì•ŒíŒŒë² íƒ€ ê°€ì§€ì¹˜ê¸°ì—)í•œ í›„ ë¦¬ìŠ¤íŠ¸ë¡œ ë§Œë“¤ì–´ë‘”ë‹¤.
 	GetNextStage();
 	if ( m_pFirst )
 	{
@@ -1248,15 +1250,15 @@ int CJKStage::MinValue(int nAlpha,int nBeta)
 				m_pSelectedChild = pNode;
 			}
 			////////////////////////////////////////////////////////
-			// ºÎ¸ğÀÎ Max´Â Å« Á¡¼ö¸¦ ¼±ÅÃÇÏ·Á ÇÒ °ÍÀÎµ¥ ³»(Min)°¡
-			// ¸¸µç ±¹¸éÀÇ Á¡¼ö°¡ Alphaº¸´Ù ÀÛÀ¸¸é ºÎ¸ğÀÎ MaxÀÇ 
-			// ¼±ÅÃ±Ç¿¡¼­ ¹ş¾Æ³ª¹Ç·Î ´õ ÀÌ»ó ÁøÇà¿¡µµ ÀÇ¹Ì°¡ ¾ø´Ù.
-			// ³ª(Min)´Â °¡Àå ÀÛÀº Á¡¼ö¸¦ °¡Áö´Â ±¹¸éÀ» ÅÃÇÏ±â ¶§¹®ÀÌ´Ù.
+			// ë¶€ëª¨ì¸ MaxëŠ” í° ì ìˆ˜ë¥¼ ì„ íƒí•˜ë ¤ í•  ê²ƒì¸ë° ë‚´(Min)ê°€
+			// ë§Œë“  êµ­ë©´ì˜ ì ìˆ˜ê°€ Alphaë³´ë‹¤ ì‘ìœ¼ë©´ ë¶€ëª¨ì¸ Maxì˜ 
+			// ì„ íƒê¶Œì—ì„œ ë²—ì•„ë‚˜ë¯€ë¡œ ë” ì´ìƒ ì§„í–‰ì—ë„ ì˜ë¯¸ê°€ ì—†ë‹¤.
+			// ë‚˜(Min)ëŠ” ê°€ì¥ ì‘ì€ ì ìˆ˜ë¥¼ ê°€ì§€ëŠ” êµ­ë©´ì„ íƒí•˜ê¸° ë•Œë¬¸ì´ë‹¤.
 			if ( nBeta <= nAlpha ) break;
 			pNode = pNode->m_pNext;
 		} while ( pNode != NULL );
 	}
-	// ¼±ÅÃµÈ ´ÙÀ½ ±¹¸éÀº ¸Ş¸ğ¸®»ó¿¡¼­ »èÁ¦ÇÏÁö ¾Ê´Â´Ù.
+	// ì„ íƒëœ ë‹¤ìŒ êµ­ë©´ì€ ë©”ëª¨ë¦¬ìƒì—ì„œ ì‚­ì œí•˜ì§€ ì•ŠëŠ”ë‹¤.
 	ClearList(m_pSelectedChild);
 	return nBeta;
 }
@@ -1264,10 +1266,10 @@ int CJKStage::MinValue(int nAlpha,int nBeta)
 MOVERESULT CJKStage::Infer(TEAM enTeam)
 {
 	/////////////////////////////////////////////////////
-	// ALPHA - Max°¡ ¼±ÅÃÇÒ ´ÙÀ½ ±¹¸é ÈÄº¸ÀÇ °ª(ÃÖ´ëÄ¡)
-	// BETA	 - MinÀÌ ¼±ÅÃÇÒ ´ÙÀ½ ±¹¸é ÈÄº¸ÀÇ °ª(ÃÖ¼ÒÄ¡)
+	// ALPHA - Maxê°€ ì„ íƒí•  ë‹¤ìŒ êµ­ë©´ í›„ë³´ì˜ ê°’(ìµœëŒ€ì¹˜)
+	// BETA	 - Minì´ ì„ íƒí•  ë‹¤ìŒ êµ­ë©´ í›„ë³´ì˜ ê°’(ìµœì†Œì¹˜)
 	/////////////////////////////////////////////////////
-	// ÇÑ³ª¶ó°¡ Plus Á¡¼öÀÌ¹Ç·Î Max°¡ µÇ¾î¾ß ÇÑ´Ù.
+	// í•œë‚˜ë¼ê°€ Plus ì ìˆ˜ì´ë¯€ë¡œ Maxê°€ ë˜ì–´ì•¼ í•œë‹¤.
 	m_bAmIMax = (enTeam == TM_HAN);
 	m_enTeam = enTeam;
 
@@ -1275,9 +1277,9 @@ MOVERESULT CJKStage::Infer(TEAM enTeam)
 	sm_nCount = 0;
 	CJKStage *pSelected = NULL;
 	/////////////////////////////////////////////////////
-	// ¾ËÆÄ´Â ÃÖ´ëÇÑ ÀÛ°Ô,º£Å¸´Â ÃÖ´ëÇÑ Å©°Ô ÃÊ±âÈ­ÇÔÀ¸·Î¼­
-	// ÃÖÃÊ¿¡´Â °¡Àå ±í¼÷È÷±îÁö °¡Áö¸¦ »¸À» ¼ö ÀÖ°Ô ÇÑ´Ù.
-	// (¾ËÆÄº£Å¸ °¡ÁöÄ¡±â¸¦ ´çÇÏÁö ¾Ê°Ô ÇÑ´Ù.)
+	// ì•ŒíŒŒëŠ” ìµœëŒ€í•œ ì‘ê²Œ,ë² íƒ€ëŠ” ìµœëŒ€í•œ í¬ê²Œ ì´ˆê¸°í™”í•¨ìœ¼ë¡œì„œ
+	// ìµœì´ˆì—ëŠ” ê°€ì¥ ê¹Šìˆ™íˆê¹Œì§€ ê°€ì§€ë¥¼ ë»—ì„ ìˆ˜ ìˆê²Œ í•œë‹¤.
+	// (ì•ŒíŒŒë² íƒ€ ê°€ì§€ì¹˜ê¸°ë¥¼ ë‹¹í•˜ì§€ ì•Šê²Œ í•œë‹¤.)
 	int nAlpha	= -9999999;
 	int nBeta	= +9999999;
 	int nScore;
@@ -1286,7 +1288,7 @@ MOVERESULT CJKStage::Infer(TEAM enTeam)
 	GetNextStage();
 	int nSelectedNo;
 	////////////////////////////////////////
-	// ÇÑ³ª¶ó ÀÔÀå¿¡¼­ Ãß·ĞÇÑ´Ù¸é...
+	// í•œë‚˜ë¼ ì…ì¥ì—ì„œ ì¶”ë¡ í•œë‹¤ë©´...
 	if ( m_bAmIMax )
 	{
 		if ( m_pFirst )
@@ -1322,7 +1324,7 @@ MOVERESULT CJKStage::Infer(TEAM enTeam)
 	} else
 	{
 	////////////////////////////////////////
-	// Á¶³ª¶ó ÀÔÀå¿¡¼­ Ãß·ĞÇÑ´Ù¸é...
+	// ì¡°ë‚˜ë¼ ì…ì¥ì—ì„œ ì¶”ë¡ í•œë‹¤ë©´...
 		if ( m_pFirst )
 		{
 			CJKStage * pNode = m_pFirst;
@@ -1367,7 +1369,7 @@ MOVERESULT CJKStage::Infer(TEAM enTeam)
 		m_enEatenPiece	= m_enPanel[m_nToY][m_nToX];
 
 		MovePiece(m_nFromX,m_nFromY,m_nToX,m_nToY);
-		// History ÀúÀå
+		// History ì €ì¥
 		m_cHistoryStack.Push(m_nFromX,m_nFromY,m_nToX,m_nToY,m_enEatenPiece);
 	
 		m_enEatenPiece = pSelected->m_enEatenPiece;
