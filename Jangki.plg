@@ -1,0 +1,57 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: Jangki - Win32 Release--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating command line "rc.exe /l 0x412 /fo"Release/Jangki.res" /d "NDEBUG" "C:\Temp\Jangki-PS Version\Jangki.rc"" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9293.TMP" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/Jangki.pch" /Yu"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Temp\Jangki-PS Version\Jangki.cpp"
+"C:\Temp\Jangki-PS Version\JangkiDoc.cpp"
+"C:\Temp\Jangki-PS Version\JangkiView.cpp"
+"C:\Temp\Jangki-PS Version\JKStage.cpp"
+"C:\Temp\Jangki-PS Version\MainFrm.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP9293.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9294.TMP" with contents
+[
+/nologo /MT /W3 /GX /O2 /D "WIN32" /D "NDEBUG" /D "_WINDOWS" /D "_MBCS" /Fp"Release/Jangki.pch" /Yc"stdafx.h" /Fo"Release/" /Fd"Release/" /FD /c 
+"C:\Temp\Jangki-PS Version\StdAfx.cpp"
+]
+Creating command line "cl.exe @C:\WINDOWS\TEMP\RSP9294.TMP" 
+Creating temporary file "C:\WINDOWS\TEMP\RSP9295.TMP" with contents
+[
+/nologo /subsystem:windows /incremental:no /pdb:"Release/Jangki.pdb" /machine:I386 /out:"Release/Jangki.exe" 
+".\Release\Jangki.obj"
+".\Release\JangkiDoc.obj"
+".\Release\JangkiView.obj"
+".\Release\JKStage.obj"
+".\Release\MainFrm.obj"
+".\Release\StdAfx.obj"
+".\Release\Jangki.res"
+]
+Creating command line "link.exe @C:\WINDOWS\TEMP\RSP9295.TMP"
+<h3>Output Window</h3>
+Compiling resources...
+Compiling...
+StdAfx.cpp
+Compiling...
+Jangki.cpp
+JangkiDoc.cpp
+JangkiView.cpp
+JKStage.cpp
+MainFrm.cpp
+Generating Code...
+Linking...
+
+
+
+<h3>Results</h3>
+Jangki.exe - 0 error(s), 0 warning(s)
+</pre>
+</body>
+</html>
