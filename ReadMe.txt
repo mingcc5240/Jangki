@@ -12,10 +12,10 @@ but is also a starting point for writing your application.
 This file contains a summary of what you will find in each of the files that
 make up your Jangki application.
 
-Jangki.dsp
+Jangki.sIn
     This file (the project file) contains information at the project level and
     is used to build a single project or subproject. Other users can share the
-    project (.dsp) file, but they should export the makefiles locally.
+    project (.vcxproj) file, but they should export the makefiles locally.
 
 Jangki.h
     This is the main header file for the application.  It includes other
