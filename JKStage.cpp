@@ -413,7 +413,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 	
 	bMovable = false;
 	// Try left side line
-	for ( k = nFromX - 1; k >= 0; -- k )
+	for ( int k = nFromX - 1; k >= 0; -- k )
 	{
 		if ( bMovable )
 		{
@@ -441,7 +441,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 	}
 	bMovable = false;
 	// Try upper line
-	for ( k = nFromY - 1; k >= 0; -- k )
+	for ( int k = nFromY - 1; k >= 0; -- k )
 	{
 		if ( bMovable )
 		{
@@ -469,7 +469,7 @@ void CJKStage::GetMovablePo(int nFromX,int nFromY)
 	}
 	bMovable = false;
 	// Try under line
-	for ( k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
+	for ( int k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
 	{
 		if ( bMovable )
 		{
@@ -564,7 +564,7 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 			break;
 	}
 	// try Left line 
-	for ( k = nFromX - 1; k >= 0; -- k )
+	for ( int k = nFromX - 1; k >= 0; -- k )
 	{
 		if ( GetTeamAt(k,nFromY) == GetTeamAt(nFromX,nFromY) )
 			break;
@@ -574,7 +574,7 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 	}
 
 	// try Upper line
-	for ( k = nFromY - 1; k >= 0; -- k )
+	for ( int k = nFromY - 1; k >= 0; -- k )
 	{
 		if ( GetTeamAt(nFromX,k) == GetTeamAt(nFromX,nFromY) )
 			break;
@@ -584,7 +584,7 @@ void CJKStage::GetMovableCha(int nFromX,int nFromY)
 	}
 	
 	// Try under line 
-	for ( k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
+	for ( int k = nFromY + 1; k < DF_PANEL_HEIGHT; ++ k )
 	{
 		if ( GetTeamAt(nFromX,k) == GetTeamAt(nFromX,nFromY) )
 			break;
