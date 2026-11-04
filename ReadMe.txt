@@ -1,4 +1,4 @@
-Korean Chess(Janki) made by Visual C++ 6.0!!
+Korean Chess(Janki) made by Visual Studio 2022
 
 ========================================================================
        MICROSOFT FOUNDATION CLASS LIBRARY : Jangki
